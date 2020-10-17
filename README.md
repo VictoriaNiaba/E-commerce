@@ -3,7 +3,7 @@
 ##  Sommaire
 
 
-- [Présentation du projet](#présentation du projet)
+- [Présentation du projet](#présentation-du-projet)
 - [Qui sommes-nous ?](#qui-sommes-nous-)
 - [Structure](#structure)
 - [License](#license)
@@ -37,8 +37,8 @@ E-COMMERCE
 |   LICENSE.md # Licence du projet
 |
 +---back-end
-|	|   .gitignore
-|	|   mvnw # Wrapper de Maven pour Linux
+|   |   .gitignore
+|   |   mvnw # Wrapper de Maven pour Linux
 |   |   mvnw.cmd # Wrapper de Maven pour Windows
 |   |   pom.xml # Informations sur le projet et configuration Maven 
 |   |
@@ -63,7 +63,7 @@ E-COMMERCE
     |
     +---node_modules # Librairies externes
     \---projects # Contient les projets Angular
-    	+---back-office # Sa structure est similaire à celle du front-office 
+        +---back-office # Sa structure est similaire à celle du front-office 
         \---front-office
             |   tsconfig.app.json
             |   tsconfig.spec.json
@@ -94,4 +94,5 @@ E-COMMERCE
 
 Voir le fichier LICENCE.md pour plus de détails. Si vous souhaitez utiliser notre projet et que vous jugez la licence actuelle trop restrictive, n'hésitez pas à nous contacter par e-mail :
 
-desnoust.nicolas451@gmail.com
+desnoust.nicolas451@gmail.com ou niaba.victoria@gmail.com
+
