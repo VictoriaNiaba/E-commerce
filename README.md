@@ -37,8 +37,8 @@ E-COMMERCE
 |   LICENSE.md # Licence du projet
 |
 +---back-end
-|	  |   .gitignore
-|	  |   mvnw # Wrapper de Maven pour Linux
+|   |   .gitignore
+|   |   mvnw # Wrapper de Maven pour Linux
 |   |   mvnw.cmd # Wrapper de Maven pour Windows
 |   |   pom.xml # Informations sur le projet et configuration Maven 
 |   |
