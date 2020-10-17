@@ -3,7 +3,7 @@
 ##  Sommaire
 
 
-- [Présentation du projet](#présentation du projet)
+- [Présentation du projet](#présentation-du-projet)
 - [Qui sommes-nous ?](#qui-sommes-nous-)
 - [Structure](#structure)
 - [License](#license)
