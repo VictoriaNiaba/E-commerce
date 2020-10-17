@@ -94,4 +94,5 @@ E-COMMERCE
 
 Voir le fichier LICENCE.md pour plus de détails. Si vous souhaitez utiliser notre projet et que vous jugez la licence actuelle trop restrictive, n'hésitez pas à nous contacter par e-mail :
 
-desnoust.nicolas451@gmail.com
+desnoust.nicolas451@gmail.com ou niaba.victoria@gmail.com
+
