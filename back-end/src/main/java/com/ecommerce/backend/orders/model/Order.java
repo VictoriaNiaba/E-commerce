@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+// TODO(victoria): Ajouter les annotations de JPA manquantes
 @Data
 @Entity
 @Table(name = "orders")
@@ -18,7 +19,8 @@ public class Order implements Serializable {
 
 	@Id
 	private int id;
-	
+
+	// TODO(victoria): Remplacer la clé étrangère par une relation entre objets
 	@Column(name = "user_id")
 	private int userId;
 }
