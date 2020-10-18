@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ecommerce.backend.products.model.Product;
 
 @Repository
-public interface ProductRepository extends PagingAndSortingRepository<Product, String> {
+public interface ProductRepository extends PagingAndSortingRepository<Product, Integer> {
 
 }
