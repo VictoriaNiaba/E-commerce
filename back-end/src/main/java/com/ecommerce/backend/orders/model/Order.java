@@ -7,10 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // TODO(victoria): Ajouter les annotations de JPA manquantes
-@Data
+@Data @Builder @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {

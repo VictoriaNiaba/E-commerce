@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ecommerce.backend.core.api.CustomPage;
-import com.ecommerce.backend.core.services.PageMapper;
 import com.ecommerce.backend.orders.model.Order;
 import com.ecommerce.backend.orders.services.OrderRepository;
 
@@ -24,13 +22,10 @@ import com.ecommerce.backend.orders.services.OrderRepository;
 public class OrderControllerREST {
 
 	private @Autowired OrderRepository orderRepository;
-	private @Autowired PageMapper<Order> pageMapper;
 
 	@GetMapping("")
-	public ResponseEntity<CustomPage<Order>> getAll(Pageable pageable) {
-		Page<Order> results = orderRepository.findAll(pageable);
-		CustomPage<Order> orders = pageMapper.toCustomPage(results); 
-
+	public ResponseEntity<Page<Order>> getAll(Pageable pageable) {
+		Page<Order> orders = orderRepository.findAll(pageable);
 		return ResponseEntity.ok().body(orders);
 	}
 }

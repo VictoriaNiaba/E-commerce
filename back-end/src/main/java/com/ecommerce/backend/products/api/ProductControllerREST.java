@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ecommerce.backend.core.api.CustomPage;
-import com.ecommerce.backend.core.services.PageMapper;
 import com.ecommerce.backend.products.model.Product;
 import com.ecommerce.backend.products.services.ProductRepository;
 
 /**
  * Contrôleur REST prenant en charge tous les endpoints commençant par la racine
- * "/educations".
+ * "/products".
  * 
  */
 @RestController
@@ -25,13 +23,10 @@ import com.ecommerce.backend.products.services.ProductRepository;
 public class ProductControllerREST {
 
 	private @Autowired ProductRepository productRepository;
-	private @Autowired PageMapper<Product> pageMapper;
 
 	@GetMapping("")
-	public ResponseEntity<CustomPage<Product>> getAll(Pageable pageable) {
-		Page<Product> results = productRepository.findAll(pageable);
-		CustomPage<Product> orders = pageMapper.toCustomPage(results);
-
-		return ResponseEntity.ok().body(orders);
+	public ResponseEntity<Page<Product>> getAll(Pageable pageable) {
+		Page<Product> products = productRepository.findAll(pageable);
+		return ResponseEntity.ok().body(products);
 	}
 }
