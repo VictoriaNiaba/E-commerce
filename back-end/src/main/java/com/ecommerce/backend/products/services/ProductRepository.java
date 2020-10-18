@@ -7,5 +7,5 @@ import com.ecommerce.backend.products.model.Product;
 
 @Repository
 public interface ProductRepository extends PagingAndSortingRepository<Product, Integer> {
-
+// interroger la base de données pour recuperer les beans 
 }

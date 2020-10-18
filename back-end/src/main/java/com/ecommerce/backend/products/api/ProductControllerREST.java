@@ -14,8 +14,8 @@ import com.ecommerce.backend.products.services.ProductRepository;
 
 /**
  * Contrôleur REST prenant en charge tous les endpoints commençant par la racine
- * "/products".
- * 
+ * "/products". // repondre au requête utilisateurs et choisir les routes ect
+ * ...
  */
 @RestController
 @CrossOrigin("*")

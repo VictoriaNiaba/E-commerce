@@ -1,4 +1,4 @@
-package com.ecommerce.backend.orders.model;
+package com.ecommerce.backend.products.model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -10,41 +10,30 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.ecommerce.backend.users.model.User;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "orders")
-public class Order implements Serializable {
+@Table(name = "categories")
+public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(length = 10)
+	@Column(length = 11)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	int id;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "user_id")
-	private User user;
+	@Column(length = 255, nullable = false)
+	private String title;
 
 	@OneToMany(cascade = {
 			CascadeType.MERGE,
 			CascadeType.PERSIST,
 			CascadeType.REMOVE
-	}, fetch = FetchType.LAZY, mappedBy = "order")
-	private Collection<OrderDetails> details;
+	}, fetch = FetchType.LAZY, mappedBy = "category")
+	private Collection<Product> products;
 }
