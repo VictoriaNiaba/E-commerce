@@ -246,10 +246,10 @@
       <data key="d5"/>
       <data key="d6">
         <y:ImageNode>
-          <y:Geometry height="55.30664062500023" width="116.84375000000045" x="162.07812499999977" y="102.55078884201893"/>
+          <y:Geometry height="55.30664062500023" width="111.84375000000051" x="164.98907226562505" y="102.55078884201893"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="56.42187500000023" y="59.30664062500023"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="53.921875000000256" y="59.30664062500023"/>
           <y:Image alphaImage="true" refid="1"/>
         </y:ImageNode>
       </data>

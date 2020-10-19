@@ -17,19 +17,18 @@ import io.swagger.v3.oas.annotations.Parameter;
 
 /**
  * Contrôleur REST prenant en charge tous les endpoints commençant par la racine
- * "/products". // repondre au requête utilisateurs et choisir les routes ect
- * ...
+ * "/products".
  */
 @RestController
 @CrossOrigin("*")
 @RequestMapping(value = "products", produces = "application/json")
-public class ProductControllerREST {
+public class ProductControllerREST implements ProductControllerSpecification {
 
 	private @Autowired ProductRepository productRepository;
 
 	@GetMapping("")
 	@PageableAsQueryParam
-	public ResponseEntity<Page<Product>> getAll(@Parameter(hidden = true) Pageable pageable) {
+	public ResponseEntity<Page<Product>> findAllProducts(@Parameter(hidden = true) Pageable pageable) {
 		Page<Product> products = productRepository.findAll(pageable);
 		return ResponseEntity.ok().body(products);
 	}

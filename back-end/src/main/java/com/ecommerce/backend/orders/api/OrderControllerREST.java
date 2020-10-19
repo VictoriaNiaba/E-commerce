@@ -22,13 +22,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 @RestController
 @CrossOrigin("*")
 @RequestMapping(value = "orders", produces = "application/json")
-public class OrderControllerREST {
+public class OrderControllerREST implements OrderControllerSpecification {
 
 	private @Autowired OrderRepository orderRepository;
 
 	@GetMapping("")
 	@PageableAsQueryParam
-	public ResponseEntity<Page<Order>> getAll(@Parameter(hidden = true) Pageable pageable) {
+	public ResponseEntity<Page<Order>> findAllOrders(@Parameter(hidden = true) Pageable pageable) {
 		Page<Order> orders = orderRepository.findAll(pageable);
 		return ResponseEntity.ok().body(orders);
 	}
