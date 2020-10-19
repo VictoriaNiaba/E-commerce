@@ -90,6 +90,20 @@ E-COMMERCE
 
 ```
 
+## Liens utiles
+
+Cette section regroupe les liens/sources utiles au développement de ce projet. 
+
+### Back-end
+
+- [*Designer une API REST | OCTO Talks !*](https://blog.octo.com/designer-une-api-rest/) (2014, 1 décembre). Octo.
+- [ProgrammingIsFun](https://www.youtube.com/c/ProgrammingIsFun). (2020, 19 mars). *[Ecommerce App - Angular 9, NodeJs And MySQL](https://www.youtube.com/playlist?list=PLsjmv9aDmNDAN5adZxbGTlQHlgU2je7KE)* [PlayList]. YouTube.
+- B. (2020, 20 juillet). *[A Simple E-Commerce Implementation with Spring.](https://www.baeldung.com/spring-angular-ecommerce)* Baeldung.
+
+### Divers
+
+- [Roadmap du projet.](https://trello.com/b/JRqCs0QV/e-commerce) Trello
+
 ## License
 
 Voir le fichier LICENCE.md pour plus de détails. Si vous souhaitez utiliser notre projet et que vous jugez la licence actuelle trop restrictive, n'hésitez pas à nous contacter par e-mail :
