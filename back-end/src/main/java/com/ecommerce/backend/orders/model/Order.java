@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.ecommerce.backend.users.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,6 +40,7 @@ public class Order implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "user_id")
+	@JsonIgnore // TODO: à remplacer par l'id du user
 	private User user;
 
 	@OneToMany(cascade = {
@@ -46,5 +48,6 @@ public class Order implements Serializable {
 			CascadeType.PERSIST,
 			CascadeType.REMOVE
 	}, fetch = FetchType.LAZY, mappedBy = "order")
+	@JsonIgnore // TODO: à remplacer
 	private Collection<OrderDetails> details;
 }

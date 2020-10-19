@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -48,6 +50,7 @@ public class Product implements Serializable {
 
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "cat_id")
+	@JsonIgnore // TODO: à remplacer par l'id de la categorie
 	private Category category;
 
 //	@OneToMany(cascade = {

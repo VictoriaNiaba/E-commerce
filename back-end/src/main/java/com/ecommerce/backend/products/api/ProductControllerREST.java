@@ -1,5 +1,6 @@
 package com.ecommerce.backend.products.api;
 
+import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecommerce.backend.products.model.Product;
 import com.ecommerce.backend.products.services.ProductRepository;
 
+import io.swagger.v3.oas.annotations.Parameter;
+
 /**
  * Contrôleur REST prenant en charge tous les endpoints commençant par la racine
  * "/products". // repondre au requête utilisateurs et choisir les routes ect
@@ -19,13 +22,14 @@ import com.ecommerce.backend.products.services.ProductRepository;
  */
 @RestController
 @CrossOrigin("*")
-@RequestMapping(value = "api/products", produces = "application/json")
+@RequestMapping(value = "products", produces = "application/json")
 public class ProductControllerREST {
 
 	private @Autowired ProductRepository productRepository;
 
 	@GetMapping("")
-	public ResponseEntity<Page<Product>> getAll(Pageable pageable) {
+	@PageableAsQueryParam
+	public ResponseEntity<Page<Product>> getAll(@Parameter(hidden = true) Pageable pageable) {
 		Page<Product> products = productRepository.findAll(pageable);
 		return ResponseEntity.ok().body(products);
 	}
