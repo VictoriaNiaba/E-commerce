@@ -27,7 +27,7 @@ public class OrderDto implements Serializable {
 		example = "1",
 		required = true
 	)
-	private int userId;
+	private String username;
 
 	@Schema(
 		description = "Order details.",

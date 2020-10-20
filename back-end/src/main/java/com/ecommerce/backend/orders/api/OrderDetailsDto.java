@@ -19,7 +19,21 @@ public class OrderDetailsDto implements Serializable {
 		example = "2",
 		required = true
 	)
-	private int productId;
+	private String productTitle;
+	
+	@Schema(
+		description = "Unique identifier of the ordered product.",
+		example = "2",
+		required = true
+	)
+	private String productDescription;
+	
+	@Schema(
+		description = "Unique identifier of the ordered product.",
+		example = "2",
+		required = true
+	)
+	private double productPrice;
 
 	@Schema(
 			description = "Quantity of the ordered product.",

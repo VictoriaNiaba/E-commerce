@@ -1,5 +1,8 @@
 package com.ecommerce.backend.orders.api;
 
+import javax.annotation.PostConstruct;
+
+import org.apache.commons.lang3.NotImplementedException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,13 @@ public class OrderMapper implements Mapper<Order, OrderDto> {
 
 	private @Autowired ModelMapper modelMapper;
 
+	@PostConstruct
+	public void updateTypeMap() {
+		modelMapper.createTypeMap(Order.class, OrderDto.class)
+				.<String>addMapping(src -> src.getUser().getUsername(),
+						(dest, value) -> dest.setUsername(value));
+	}
+
 	@Override
 	public OrderDto toDto(Order domain) {
 		return modelMapper.map(domain, OrderDto.class);
@@ -19,6 +29,6 @@ public class OrderMapper implements Mapper<Order, OrderDto> {
 
 	@Override
 	public Order toDomain(OrderDto dto) {
-		return modelMapper.map(dto, Order.class);
+		throw new NotImplementedException("Not implemented yet.");
 	}
 }
