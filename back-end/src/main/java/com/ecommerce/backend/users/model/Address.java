@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,12 +15,12 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter @Setter
 @Builder
-@NoArgsConstructor
+@ToString
 @AllArgsConstructor
 @Entity
 @Table(name = "addresses")
@@ -53,7 +54,8 @@ public class Address implements Serializable {
 	@Column(length = 6, nullable = true, name = "pincode")
 	private int pinCode;
 
-	@ManyToOne(optional = false)
+	@ToString.Exclude
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
 }

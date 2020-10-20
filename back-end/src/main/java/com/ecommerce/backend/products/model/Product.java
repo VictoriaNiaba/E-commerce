@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,17 +12,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter @Setter
 @Builder
-@NoArgsConstructor
+@ToString
 @AllArgsConstructor
 @Entity
 @Table(name = "products")
@@ -37,15 +36,19 @@ public class Product implements Serializable {
 	@Column(length = 255, nullable = false)
 	private String title;
 
+	@ToString.Exclude
 	@Column(length = 255, nullable = false)
 	private String image;
 
+	@ToString.Exclude
 	@Column(nullable = true)
 	private String images;
 
+	@ToString.Exclude
 	@Column(nullable = false)
 	private String description;
 
+	@ToString.Exclude
 	@Column(length = 255, nullable = false, name = "short_desc")
 	private String shortDescription;
 
@@ -55,9 +58,9 @@ public class Product implements Serializable {
 	@Column(length = 10, nullable = false)
 	private int quantity;
 
-	@ManyToOne(optional = true)
+	@ToString.Exclude
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cat_id")
-	@JsonIgnore // TODO: à remplacer par l'id de la categorie
 	private Category category;
 
 //	@OneToMany(cascade = {

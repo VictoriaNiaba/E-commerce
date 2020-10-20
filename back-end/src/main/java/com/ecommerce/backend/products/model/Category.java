@@ -16,12 +16,12 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter @Setter
 @Builder
-@NoArgsConstructor
+@ToString
 @AllArgsConstructor
 @Entity
 @Table(name = "categories")
@@ -37,6 +37,7 @@ public class Category implements Serializable {
 	@Column(length = 255, nullable = false)
 	private String title;
 
+	@ToString.Exclude
 	@OneToMany(cascade = {
 			CascadeType.MERGE,
 			CascadeType.PERSIST,

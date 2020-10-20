@@ -20,13 +20,13 @@ import com.ecommerce.backend.users.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
@@ -38,14 +38,14 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@ManyToOne(optional = false)
 	@JoinColumn(name = "user_id")
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private User user;
 
 	@OneToMany(cascade = {
 			CascadeType.MERGE,
 			CascadeType.PERSIST,
 			CascadeType.REMOVE
-	}, fetch = FetchType.LAZY, mappedBy = "order")
+	}, fetch = FetchType.EAGER, mappedBy = "order")
 	private Collection<OrderDetails> details;
 }
