@@ -4,8 +4,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
-import com.ecommerce.backend.orders.model.Order;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -19,6 +17,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Order management")
 public interface OrderControllerSpecification {
 
-	@Operation(summary = "Find all Orders", description = "Allow pagination and sorting", tags = { "orders" })
-	public ResponseEntity<Page<Order>> findAllOrders(Pageable pageable);
+	@Operation(
+		summary = "Find all Orders", 
+		description = "Allow pagination and sorting", 
+		tags = { "orders" }
+	)
+	public ResponseEntity<Page<OrderDto>> findAllOrders(Pageable pageable);
 }

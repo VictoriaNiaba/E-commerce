@@ -6,6 +6,8 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -52,9 +54,10 @@ public class User implements Serializable {
 	@Column(length = 10, nullable = true)
 	private int role;
 
-	@Column(nullable = true)
+	@Column(nullable = true, name = "photo_url")
 	private String photoUrl;
 
+	@Enumerated(EnumType.STRING)
 	@Column(length = 255, nullable = false, name = "type")
 	private AuthenticationType authType;
 

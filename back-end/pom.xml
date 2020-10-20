@@ -18,6 +18,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<springdoc.version>1.4.8</springdoc.version>
+		<modelmapper.version>2.3.8</modelmapper.version>
 	</properties>
 
 	<dependencies>
@@ -86,6 +87,15 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- END Lombok -->
+
+		<!-- BEGIN ModelMapper (Dto <-> Domain) -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>${modelmapper.version}</version>
+		</dependency>
+		<!-- END ModelMapper (Dto <-> Domain) -->
+
 	</dependencies>
 
 	<build>
