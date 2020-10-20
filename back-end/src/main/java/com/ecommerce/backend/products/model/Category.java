@@ -16,13 +16,15 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter
 @Builder
-@ToString
+@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "categories")
 public class Category implements Serializable {

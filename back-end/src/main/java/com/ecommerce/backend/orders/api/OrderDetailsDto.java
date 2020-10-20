@@ -3,10 +3,13 @@ package com.ecommerce.backend.orders.api;
 import java.io.Serializable;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value @Builder
+@Data @Builder 
+@NoArgsConstructor @AllArgsConstructor
 public class OrderDetailsDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;

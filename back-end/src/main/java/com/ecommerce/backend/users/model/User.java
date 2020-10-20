@@ -20,6 +20,7 @@ import com.ecommerce.backend.orders.model.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -28,6 +29,7 @@ import lombok.ToString;
 @Getter @Setter
 @Builder
 @ToString
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
@@ -77,10 +79,11 @@ public class User implements Serializable {
 	}, fetch = FetchType.LAZY, mappedBy = "user")
 	private Collection<Order> orders;
 
+	@ToString.Exclude
 	@OneToMany(cascade = {
 			CascadeType.MERGE,
 			CascadeType.PERSIST,
 			CascadeType.REMOVE
-	}, fetch = FetchType.EAGER, mappedBy = "user")
+	}, fetch = FetchType.LAZY, mappedBy = "user")
 	private Collection<Address> addresses;
 }
