@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.Parameter;
  */
 @RestController
 @CrossOrigin("*")
-@RequestMapping(value = "products", produces = "application/json")
+@RequestMapping(value = "/api/products", produces = "application/json")
 public class ProductControllerREST implements ProductControllerSpecification {
 
 	private @Autowired ProductRepository productRepository;

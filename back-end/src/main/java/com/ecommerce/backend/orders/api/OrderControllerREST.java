@@ -1,5 +1,7 @@
 package com.ecommerce.backend.orders.api;
 
+import java.util.Map;
+
 import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -7,10 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.backend.core.Mapper;
+import com.ecommerce.backend.core.exceptionhandling.exceptions.EntityNotFoundException;
 import com.ecommerce.backend.orders.model.Order;
 import com.ecommerce.backend.orders.services.OrderRepository;
 
@@ -22,7 +26,7 @@ import io.swagger.v3.oas.annotations.Parameter;
  */
 @RestController
 @CrossOrigin("*")
-@RequestMapping(value = "orders", produces = "application/json")
+@RequestMapping(value = "api/orders", produces = "application/json")
 public class OrderControllerREST implements OrderControllerSpecification {
 
 	private @Autowired OrderRepository orderRepository;
@@ -32,7 +36,15 @@ public class OrderControllerREST implements OrderControllerSpecification {
 	@PageableAsQueryParam
 	public ResponseEntity<Page<OrderDto>> findAllOrders(@Parameter(hidden = true) Pageable pageable) {
 		Page<OrderDto> ordersDto = orderRepository.findAll(pageable)
-												  .map(orderMapper::toDto);
+				.map(orderMapper::toDto);
+
+		return ResponseEntity.ok().body(ordersDto);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<OrderDto> findOrderById(@PathVariable("id") int id) {
+		OrderDto ordersDto = orderRepository.findById(id).map(orderMapper::toDto)
+				.orElseThrow(() -> new EntityNotFoundException(Order.class, Map.of("id", id)));
 
 		return ResponseEntity.ok().body(ordersDto);
 	}

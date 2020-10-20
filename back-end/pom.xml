@@ -96,6 +96,13 @@
 		</dependency>
 		<!-- END ModelMapper (Dto <-> Domain) -->
 
+		<!-- BEGIN Apache Commons dependencies -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<!-- END Apache Commons dependencies -->
+
 	</dependencies>
 
 	<build>
