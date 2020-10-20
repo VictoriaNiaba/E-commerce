@@ -14,8 +14,6 @@ public class OpenApiConfiguration {
 	@Bean
 	public OpenAPI customOpenAPI(@Value("${e-commerce.version}") String appVersion) {
 		 return new OpenAPI()
-//		      .components(new Components().addSecuritySchemes("basicScheme", new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic"))
-//		      .addParameters("myHeader1", new Parameter().in("header").schema(new StringSchema()).name("myHeader1")).addHeaders("myHeader2", new Header().description("myHeader2 header").schema(new StringSchema())))
 		      .info(new Info()
 		      .title("E-commerce API")
 		      .version(appVersion)

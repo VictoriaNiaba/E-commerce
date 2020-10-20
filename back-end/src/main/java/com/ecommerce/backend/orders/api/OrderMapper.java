@@ -15,7 +15,6 @@ public class OrderMapper implements Mapper<Order, OrderDto> {
 	@Override
 	public OrderDto toDto(Order domain) {
 		OrderDto dto = modelMapper.map(domain, OrderDto.class);
-//		orderDto.setCode(domain.getId());
 
 		return dto;
 	}
