@@ -13,9 +13,16 @@ import javax.persistence.Table;
 
 import com.ecommerce.backend.products.model.Product;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "orders_details")
 public class OrderDetails implements Serializable {

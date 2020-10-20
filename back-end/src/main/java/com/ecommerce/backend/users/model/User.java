@@ -17,11 +17,18 @@ import javax.persistence.Table;
 
 import com.ecommerce.backend.orders.model.Order;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-// TODO: spécifier les valeurs par défaut en s'inspirant de
-// celles décrites dans les schémas de la BDD
-@Data
+/* TODO: spécifier les valeurs par défaut en s'inspirant de 
+ * celles décrites dans les schémas de la BDD. */
+@Getter @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User implements Serializable {

@@ -14,15 +14,11 @@ public class OrderMapper implements Mapper<Order, OrderDto> {
 
 	@Override
 	public OrderDto toDto(Order domain) {
-		OrderDto dto = modelMapper.map(domain, OrderDto.class);
-
-		return dto;
+		return modelMapper.map(domain, OrderDto.class);
 	}
 
 	@Override
 	public Order toDomain(OrderDto dto) {
-		Order domain = modelMapper.map(dto, Order.class);
-		
-		return domain;
+		return modelMapper.map(dto, Order.class);
 	}
 }

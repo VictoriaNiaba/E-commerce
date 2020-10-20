@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Value;
 
-@Data
+@Value @Builder
 public class OrderDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,7 +24,7 @@ public class OrderDto implements Serializable {
 		example = "1",
 		required = true
 	)
-	private String userId;
+	private int userId;
 
 	@Schema(
 		description = "Order details.",
