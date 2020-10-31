@@ -19,6 +19,8 @@
 		<java.version>11</java.version>
 		<springdoc.version>1.4.8</springdoc.version>
 		<modelmapper.version>2.3.8</modelmapper.version>
+		<org.json.version>20200518</org.json.version>
+		<mapstruct.version>1.4.1.Final</mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -26,6 +28,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -94,6 +100,11 @@
 			<artifactId>modelmapper</artifactId>
 			<version>${modelmapper.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
 		<!-- END ModelMapper (Dto <-> Domain) -->
 
 		<!-- BEGIN Apache Commons dependencies -->
@@ -103,6 +114,20 @@
 		</dependency>
 		<!-- END Apache Commons dependencies -->
 
+		<!-- BEGIN JSON dependencies -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${org.json.version}</version>
+		</dependency>
+		<!-- END JSON dependencies -->
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -110,6 +135,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<release>11</release>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

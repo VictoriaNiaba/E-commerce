@@ -19,9 +19,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter
+@Getter
+@Setter
 @Builder
-@ToString
+@ToString(of = { "id", "line1", "line2", "city",
+		"state", "country", "phone", "pinCode" })
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -56,7 +58,6 @@ public class Address implements Serializable {
 	@Column(length = 6, nullable = true, name = "pincode")
 	private int pinCode;
 
-	@ToString.Exclude
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;

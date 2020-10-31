@@ -1,4 +1,4 @@
-package com.ecommerce.backend.orders.api;
+package com.ecommerce.backend.orders.services;
 
 import javax.annotation.PostConstruct;
 
@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.backend.core.Mapper;
+import com.ecommerce.backend.orders.api.OrderDto;
 import com.ecommerce.backend.orders.model.Order;
+import com.ecommerce.backend.orders.model.SearchableOrder;
 
 @Service
-public class OrderMapper implements Mapper<Order, OrderDto> {
+public class OrderMapper implements Mapper<Order, OrderDto, SearchableOrder> {
 
 	private @Autowired ModelMapper modelMapper;
 
@@ -29,6 +31,11 @@ public class OrderMapper implements Mapper<Order, OrderDto> {
 
 	@Override
 	public Order toDomain(OrderDto dto) {
+		throw new NotImplementedException("Not implemented yet.");
+	}
+
+	@Override
+	public SearchableOrder toSearch(Order domain) {
 		throw new NotImplementedException("Not implemented yet.");
 	}
 }

@@ -24,7 +24,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(of= {"id", "title"})
 @Entity
 @Table(name = "categories")
 public class Category implements Serializable {
@@ -39,7 +39,6 @@ public class Category implements Serializable {
 	@Column(length = 255, nullable = false)
 	private String title;
 
-	@ToString.Exclude
 	@OneToMany(cascade = {
 			CascadeType.MERGE,
 			CascadeType.PERSIST,

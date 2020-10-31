@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecommerce.backend.core.Mapper;
 import com.ecommerce.backend.core.exceptionhandling.exceptions.EntityNotFoundException;
 import com.ecommerce.backend.orders.model.Order;
+import com.ecommerce.backend.orders.model.SearchableOrder;
 import com.ecommerce.backend.orders.services.OrderRepository;
 
 import io.swagger.v3.oas.annotations.Parameter;
@@ -30,7 +31,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 public class OrderControllerREST implements OrderControllerSpecification {
 
 	private @Autowired OrderRepository orderRepository;
-	private @Autowired Mapper<Order, OrderDto> orderMapper;
+	private @Autowired Mapper<Order, OrderDto, SearchableOrder> orderMapper;
 
 	@GetMapping("")
 	@PageableAsQueryParam

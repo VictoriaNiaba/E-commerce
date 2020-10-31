@@ -21,7 +21,7 @@ import lombok.ToString;
 
 @Getter @Setter
 @Builder
-@ToString
+@ToString(of= {"id", "title", "price", "quantity"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -38,19 +38,15 @@ public class Product implements Serializable {
 	@Column(length = 255, nullable = false)
 	private String title;
 
-	@ToString.Exclude
 	@Column(length = 255, nullable = false)
 	private String image;
 
-	@ToString.Exclude
 	@Column(nullable = true)
 	private String images;
 
-	@ToString.Exclude
 	@Column(nullable = false)
 	private String description;
 
-	@ToString.Exclude
 	@Column(length = 255, nullable = false, name = "short_desc")
 	private String shortDescription;
 
@@ -60,7 +56,6 @@ public class Product implements Serializable {
 	@Column(length = 10, nullable = false)
 	private int quantity;
 
-	@ToString.Exclude
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cat_id")
 	private Category category;

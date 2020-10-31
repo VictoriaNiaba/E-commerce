@@ -2,6 +2,7 @@ package com.ecommerce.backend.users.model;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.ecommerce.backend.orders.model.Order;
 
@@ -28,7 +31,7 @@ import lombok.ToString;
  * celles décrites dans les schémas de la BDD. */
 @Getter @Setter
 @Builder
-@ToString
+@ToString(of = { "id", "username", "email", "firstName", "lastName", "age", "role", "authType" })
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -41,6 +44,10 @@ public class User implements Serializable {
 	@Column(length = 11)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@UpdateTimestamp
+	@Column(nullable = true)
+	private Date modificationDate;
 
 	@Column(length = 255, nullable = false)
 	private String username;
@@ -58,12 +65,11 @@ public class User implements Serializable {
 	private String lastName;
 
 	@Column(length = 10, nullable = true)
-	private int age;
+	private Integer age;
 
 	@Column(length = 10, nullable = true)
-	private int role;
+	private Integer role;
 
-	@ToString.Exclude
 	@Column(nullable = true, name = "photo_url")
 	private String photoUrl;
 
@@ -71,7 +77,6 @@ public class User implements Serializable {
 	@Column(length = 255, nullable = false, name = "type")
 	private AuthenticationType authType;
 
-	@ToString.Exclude
 	@OneToMany(cascade = {
 			CascadeType.MERGE,
 			CascadeType.PERSIST,
@@ -79,7 +84,6 @@ public class User implements Serializable {
 	}, fetch = FetchType.LAZY, mappedBy = "user")
 	private Collection<Order> orders;
 
-	@ToString.Exclude
 	@OneToMany(cascade = {
 			CascadeType.MERGE,
 			CascadeType.PERSIST,

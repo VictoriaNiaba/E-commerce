@@ -31,7 +31,7 @@ import lombok.ToString;
 @ToString(of= {"id", "user"})
 @Entity
 @Table(name = "orders")
-public class Order implements Serializable {
+public class SearchableOrder implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
