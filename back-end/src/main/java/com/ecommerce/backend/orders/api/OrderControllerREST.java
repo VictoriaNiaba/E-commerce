@@ -32,6 +32,7 @@ public class OrderControllerREST implements OrderControllerSpecification {
 	private @Autowired OrderRepository orderRepository;
 	private @Autowired OrderMapper orderMapper;
 
+	@Override
 	@GetMapping("")
 	@PageableAsQueryParam
 	public ResponseEntity<Page<OrderDto>> findAllOrders(@Parameter(hidden = true) Pageable pageable) {
@@ -42,7 +43,7 @@ public class OrderControllerREST implements OrderControllerSpecification {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<OrderDto> findOrderById(@PathVariable("id") int id) {
+	public ResponseEntity<OrderDto> findOrderById(@PathVariable("id") Long id) {
 		OrderDto ordersDto = orderRepository.findById(id).map(orderMapper::toDto)
 				.orElseThrow(() -> new EntityNotFoundException(Order.class, Map.of("id", id)));
 

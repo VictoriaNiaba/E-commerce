@@ -26,6 +26,7 @@ public class ProductControllerREST implements ProductControllerSpecification {
 
 	private @Autowired ProductRepository productRepository;
 
+	@Override
 	@GetMapping("")
 	@PageableAsQueryParam
 	public ResponseEntity<Page<Product>> findAllProducts(@Parameter(hidden = true) Pageable pageable) {

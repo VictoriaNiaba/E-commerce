@@ -8,6 +8,5 @@ import com.ecommerce.backend.products.model.Product;
 
 @Repository
 @RepositoryRestResource(exported = false)
-public interface ProductRepository extends PagingAndSortingRepository<Product, Integer> {
-// interroger la base de données pour recuperer les beans 
+public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
 }

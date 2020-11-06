@@ -8,6 +8,6 @@ import com.ecommerce.backend.orders.model.Order;
 
 @Repository
 @RepositoryRestResource(exported = false)
-public interface OrderRepository extends PagingAndSortingRepository<Order, Integer> {
+public interface OrderRepository extends PagingAndSortingRepository<Order, Long> {
 
 }
