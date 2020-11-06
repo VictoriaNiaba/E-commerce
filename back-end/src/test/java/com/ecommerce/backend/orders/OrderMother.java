@@ -3,7 +3,6 @@ package com.ecommerce.backend.orders;
 import java.util.Collection;
 
 import com.ecommerce.backend.orders.model.Order;
-import com.ecommerce.backend.orders.model.Order.OrderBuilder;
 import com.ecommerce.backend.orders.model.OrderDetails;
 import com.ecommerce.backend.products.CategoryMother;
 import com.ecommerce.backend.products.model.Category;
@@ -21,48 +20,51 @@ public class OrderMother {
 
 	private long autoIncrementId = 1L;
 
-	public OrderBuilder anEmptyOrder() {
+	public Order anEmptyOrder() {
+
+		User user = UserMother.aUserWithNoOrders();
 
 		Order order = Order.builder()
 				.id(autoIncrementId++)
+				.user(user)
 				.build();
 
-		User user = UserMother.aUserWithNoOrders()
-				.orders(ImmutableList.of(order))
-				.build();
+		user.setOrders(ImmutableList.of(order));
 
-		OrderBuilder orderBuilder = order.toBuilder()
-				.user(user);
+		log.info(order.toString());
 
-		log.info(orderBuilder.toString());
-
-		return orderBuilder;
+		return order;
 	}
 
-	public OrderBuilder anOrder() {
+	public Order anOrder() {
 		// Création de la commande
-		Order order = OrderMother.anEmptyOrder().build();
+		Order order = OrderMother.anEmptyOrder();
 
 		// Création et association des dépendances
 		OrderDetails bananaOrderDetails = OrderDetailsMother.createBananaOrderDetails()
+				.toBuilder()
 				.order(order)
 				.build();
-		OrderDetails appleOrderDetails = OrderDetailsMother.createAppleOrderDetails()
+		OrderDetails appleOrderDetails = OrderDetailsMother.anAppleOrderDetails()
+				.toBuilder()
 				.order(order)
 				.build();
-		Category fruits = CategoryMother.aFruitCategory().build();
+
+		// Mise à jour des produits de la catégorie fruits pour garantir la cohésion des références
 		Product banana = bananaOrderDetails.getProduct(), apple = appleOrderDetails.getProduct();
+		Category fruits = CategoryMother.aFruitCategory();
 		fruits.setProducts(ImmutableList.of(banana, apple));
 		banana.setCategory(fruits);
 		apple.setCategory(fruits);
-		Collection<OrderDetails> orderDetails = ImmutableList.of(bananaOrderDetails, appleOrderDetails);
+
+		Collection<OrderDetails> orderDetails = ImmutableList.of(
+				bananaOrderDetails, appleOrderDetails);
 
 		// Définition des associations commande <-> dépendances
-		OrderBuilder orderBuilder = order.toBuilder()
-				.details(orderDetails);
+		order.toBuilder().details(orderDetails).build();
 
-		log.info(orderBuilder.toString());
+		log.info(order.toString());
 
-		return orderBuilder;
+		return order;
 	}
 }

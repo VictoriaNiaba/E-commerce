@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @Builder 
+@Data @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class OrderDetailsDto implements Serializable {
 

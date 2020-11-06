@@ -3,7 +3,6 @@ package com.ecommerce.backend.users;
 import com.ecommerce.backend.users.model.Address;
 import com.ecommerce.backend.users.model.AuthenticationType;
 import com.ecommerce.backend.users.model.User;
-import com.ecommerce.backend.users.model.User.UserBuilder;
 import com.google.common.collect.ImmutableList;
 
 import lombok.experimental.UtilityClass;
@@ -15,11 +14,10 @@ public class UserMother {
 
 	private long autoIncrementId = 1L;
 
-	public UserBuilder aUserWithNoOrders() {
+	public User aUserWithNoOrders() {
 
-		String firstName = "Nicolas";
-		String lastName = "Desnoust";
-		Address address = AddressMother.anAddress().build();
+		String firstName = "Nicolas", lastName = "Desnoust";
+		Address address = AddressMother.anAddress();
 
 		User user = User.builder()
 				.id(autoIncrementId++)
@@ -32,15 +30,14 @@ public class UserMother {
 				.username("Nico")
 				.photoUrl("photoUrl")
 				.authType(AuthenticationType.LOCAL)
+				.addresses(ImmutableList.of(address))
 				.build();
 
 		address.setUser(user);
-		UserBuilder userBuilder = user.toBuilder()
-				.addresses(ImmutableList.of(address));
 
-		log.info(userBuilder.toString());
+		log.info(user.toString());
 
-		return userBuilder;
+		return user;
 	}
 
 	private String buildFakeEmail(String firstName, String lastName) {

@@ -1,7 +1,6 @@
 package com.ecommerce.backend.users;
 
 import com.ecommerce.backend.users.model.Address;
-import com.ecommerce.backend.users.model.Address.AddressBuilder;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -12,19 +11,20 @@ public class AddressMother {
 	
 	private long autoIncrementId = 1L;
 
-	public AddressBuilder anAddress() {
+	public Address anAddress() {
 		
-		AddressBuilder addressBuilder = Address.builder()
+		Address address = Address.builder()
 				.id(autoIncrementId++)
 				.city("Marseille")
 				.country("France")
 				.state("Bouches-du-Rhône")
 				.line1("12 rue Robespierre")
 				.phone("0654342178")
-				.pinCode(342115);
+				.pinCode(342115)
+				.build();
 
-		log.info(addressBuilder.toString());
+		log.info(address.toString());
 
-		return addressBuilder;
+		return address;
 	}
 }

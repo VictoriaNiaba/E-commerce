@@ -1,7 +1,6 @@
 package com.ecommerce.backend.orders;
 
 import com.ecommerce.backend.orders.model.OrderDetails;
-import com.ecommerce.backend.orders.model.OrderDetails.OrderDetailsBuilder;
 import com.ecommerce.backend.products.ProductMother;
 import com.ecommerce.backend.products.model.Product;
 
@@ -14,29 +13,31 @@ public class OrderDetailsMother {
 	
 	private long autoIncrementId = 1L;
 
-	public OrderDetailsBuilder createBananaOrderDetails() {
-		Product banana = ProductMother.aBananaProduct().build();
+	public OrderDetails createBananaOrderDetails() {
+		Product banana = ProductMother.aBananaProduct();
 	
-		OrderDetailsBuilder bananaOrderDetailsBuilder = OrderDetails.builder()
+		OrderDetails bananaOrderDetails = OrderDetails.builder()
 				.id(autoIncrementId++)
 				.product(banana)
-				.quantity(1);
+				.quantity(1)
+				.build();
 
-		log.info(bananaOrderDetailsBuilder.toString());
+		log.info(bananaOrderDetails.toString());
 
-		return bananaOrderDetailsBuilder;
+		return bananaOrderDetails;
 	}
 	
-	public OrderDetailsBuilder createAppleOrderDetails() {
-		Product apple = ProductMother.anAppleProduct().build();
+	public OrderDetails anAppleOrderDetails() {
+		Product apple = ProductMother.anAppleProduct();
 	
-		OrderDetailsBuilder appleOrderDetailsBuilder = OrderDetails.builder()
+		OrderDetails appleOrderDetails = OrderDetails.builder()
 				.id(autoIncrementId++)
 				.product(apple)
-				.quantity(1);
+				.quantity(1)
+				.build();
 
-		log.info(appleOrderDetailsBuilder.toString());
+		log.info(appleOrderDetails.toString());
 
-		return appleOrderDetailsBuilder;
+		return appleOrderDetails;
 	}
 }

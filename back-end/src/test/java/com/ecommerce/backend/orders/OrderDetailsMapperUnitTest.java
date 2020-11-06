@@ -2,6 +2,8 @@ package com.ecommerce.backend.orders;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -13,8 +15,9 @@ import com.ecommerce.backend.orders.model.OrderDetails;
 import com.ecommerce.backend.orders.services.OrderDetailsMapper;
 import com.ecommerce.backend.orders.services.OrderDetailsMapperImpl;
 
-@SpringBootTest(classes = { OrderDetailsMapperImpl.class })
 @ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = { OrderDetailsMapperImpl.class })
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class OrderDetailsMapperUnitTest {
 
 	private @Autowired OrderDetailsMapper orderDetailsMapper;
@@ -26,7 +29,7 @@ class OrderDetailsMapperUnitTest {
 	@Test
 	void givenDomainToDto_whenMaps_thenCorrect() {
 		// ------------------------------ Given ------------------------------//
-		OrderDetails appleOrderDetails = OrderDetailsMother.createAppleOrderDetails().build();
+		OrderDetails appleOrderDetails = OrderDetailsMother.anAppleOrderDetails();
 
 		OrderDetailsDto expected = OrderDetailsDto.builder()
 				.productTitle(appleOrderDetails.getProduct().getTitle())

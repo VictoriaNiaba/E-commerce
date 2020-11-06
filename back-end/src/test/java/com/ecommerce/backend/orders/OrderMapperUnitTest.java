@@ -1,7 +1,10 @@
 package com.ecommerce.backend.orders;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verifyNoInteractions;
 
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -15,8 +18,9 @@ import com.ecommerce.backend.orders.services.OrderDetailsMapper;
 import com.ecommerce.backend.orders.services.OrderMapper;
 import com.ecommerce.backend.orders.services.OrderMapperImpl;
 
-@SpringBootTest(classes = { OrderMapperImpl.class })
 @ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = { OrderMapperImpl.class })
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class OrderMapperUnitTest {
 
 	private @Autowired OrderMapper orderMapper;
@@ -29,7 +33,7 @@ class OrderMapperUnitTest {
 	@Test
 	void givenDomainToDto_whenMaps_thenCorrect() {
 		// ------------------------------ Given ------------------------------//
-		Order order = OrderMother.anEmptyOrder().build();
+		Order order = OrderMother.anEmptyOrder();
 		
 		OrderDto expected = OrderDto.builder()
 				.id(order.getId())
@@ -40,5 +44,6 @@ class OrderMapperUnitTest {
 
 		// ------------------------------ Then ------------------------------//
 		assertThat(actual).isEqualTo(expected);
+		verifyNoInteractions(orderDetailsMapper);
 	}
 }

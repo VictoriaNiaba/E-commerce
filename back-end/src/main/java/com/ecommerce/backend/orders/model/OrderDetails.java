@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Builder
+@Builder(toBuilder = true)
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)

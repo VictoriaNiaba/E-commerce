@@ -1,7 +1,6 @@
 package com.ecommerce.backend.products;
 
 import com.ecommerce.backend.products.model.Category;
-import com.ecommerce.backend.products.model.Category.CategoryBuilder;
 import com.ecommerce.backend.products.model.Product;
 import com.google.common.collect.ImmutableList;
 
@@ -14,19 +13,21 @@ public class CategoryMother {
 	
 	private long autoIncrementId = 1L;
 
-	public CategoryBuilder aFruitCategory() {
+	public Category aFruitCategory() {
+		Product banana = ProductMother.aBananaProduct();
+		Product apple = ProductMother.anAppleProduct();
+		
 		Category fruits = Category.builder()
 				.id(autoIncrementId++)
 				.title("Fruits")
+				.products(ImmutableList.of(banana, apple))
 				.build();
 		
-		Product banana = ProductMother.aBananaProduct().category(fruits).build();
-		Product apple = ProductMother.anAppleProduct().category(fruits).build();
+		banana.setCategory(fruits);
+		apple.setCategory(fruits);
 		
-		CategoryBuilder fruitsBuilder = fruits.toBuilder().products(ImmutableList.of(banana, apple));
-		
-		log.info(fruitsBuilder.toString());
+		log.info(fruits.toString());
 
-		return fruitsBuilder;
+		return fruits;
 	}
 }
