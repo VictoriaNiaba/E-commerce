@@ -41,7 +41,8 @@ public class OrderControllerREST implements OrderControllerSpecification {
 
 		return ResponseEntity.ok().body(ordersDto);
 	}
-
+	
+	@Override
 	@GetMapping("/{id}")
 	public ResponseEntity<OrderDto> findOrderById(@PathVariable("id") Long id) {
 		OrderDto ordersDto = orderRepository.findById(id).map(orderMapper::toDto)

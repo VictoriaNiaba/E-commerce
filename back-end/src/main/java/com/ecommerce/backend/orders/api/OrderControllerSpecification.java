@@ -23,4 +23,11 @@ public interface OrderControllerSpecification {
 		tags = { "orders" }
 	)
 	public ResponseEntity<Page<OrderDto>> findAllOrders(Pageable pageable);
+
+	@Operation(
+		summary = "Find an Order by id", 
+		description = "Allow pagination and sorting", 
+		tags = { "order" }
+	)
+	public ResponseEntity<OrderDto> findOrderById(Long id);
 }
