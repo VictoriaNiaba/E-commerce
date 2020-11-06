@@ -29,7 +29,7 @@ import lombok.ToString;
 
 /* TODO: spécifier les valeurs par défaut en s'inspirant de 
  * celles décrites dans les schémas de la BDD. */
-@Builder
+@Builder(toBuilder = true)
 @Getter @Setter
 @ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor @AllArgsConstructor

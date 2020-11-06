@@ -1,65 +1,68 @@
 package com.ecommerce.backend.orders;
 
-import com.ecommerce.backend.orders.model.Order;
-import com.ecommerce.backend.users.model.User;
+import java.util.Collection;
 
+import com.ecommerce.backend.orders.model.Order;
+import com.ecommerce.backend.orders.model.Order.OrderBuilder;
+import com.ecommerce.backend.orders.model.OrderDetails;
+import com.ecommerce.backend.products.CategoryMother;
+import com.ecommerce.backend.products.model.Category;
+import com.ecommerce.backend.products.model.Product;
+import com.ecommerce.backend.users.UserMother;
+import com.ecommerce.backend.users.model.User;
+import com.google.common.collect.ImmutableList;
+
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@UtilityClass
 public class OrderMother {
 
-	private OrderMother() {
-	}
+	private long autoIncrementId = 1L;
 
-	public static Order createUser() {
+	public OrderBuilder anEmptyOrder() {
+
 		Order order = Order.builder()
-				.id(1L)
-				.user(new User())
-				.details(detailsMap.values())
+				.id(autoIncrementId++)
 				.build();
 
-		log.info(order.toString());
+		User user = UserMother.aUserWithNoOrders()
+				.orders(ImmutableList.of(order))
+				.build();
 
-		return order;
+		OrderBuilder orderBuilder = order.toBuilder()
+				.user(user);
+
+		log.info(orderBuilder.toString());
+
+		return orderBuilder;
 	}
-//
-//	    public static UserRegistration createUserWithNotValidPassword() {
-//	        UserRegistration userRegistration = UserRegistration.builder().
-//	            name("Test user - not valid password").
-//	            email("notValidPassword@gmail.com").
-//	            password("12345678").
-//	            dateOfBirth(LocalDate.of(1996, 12, 2))
-//	            .build();
-//
-//	        LOG.info(userRegistration);
-//
-//	        return userRegistration;
-//	    }
-//
-//	    public static UserRegistration createUserWithNotValidEmail() {
-//	        UserRegistration userRegistration = UserRegistration.builder().
-//	            name("Test user - not valid email").
-//	            email("emailNotValid").
-//	            password("1q2w3e4rT").
-//	            dateOfBirth(LocalDate.of(1989, 10, 21))
-//	            .build();
-//
-//	        LOG.info(userRegistration);
-//
-//	        return userRegistration;
-//	    }
-//
-//	    public static UserRegistration createUserNotValidDateOfBirth() {
-//	        UserRegistration userRegistration = UserRegistration.builder().
-//	            name("Test user - not valid birth date").
-//	            email("notValidBirthDate@gmail.com").
-//	            password("4r3e2w1qQ").
-//	            dateOfBirth(LocalDate.of(2030, 12, 31))
-//	            .build();
-//
-//	        LOG.info(userRegistration);
-//
-//	        return userRegistration;
-//	    }
 
+	public OrderBuilder anOrder() {
+		// Création de la commande
+		Order order = OrderMother.anEmptyOrder().build();
+
+		// Création et association des dépendances
+		OrderDetails bananaOrderDetails = OrderDetailsMother.createBananaOrderDetails()
+				.order(order)
+				.build();
+		OrderDetails appleOrderDetails = OrderDetailsMother.createAppleOrderDetails()
+				.order(order)
+				.build();
+		Category fruits = CategoryMother.aFruitCategory().build();
+		Product banana = bananaOrderDetails.getProduct(), apple = appleOrderDetails.getProduct();
+		fruits.setProducts(ImmutableList.of(banana, apple));
+		banana.setCategory(fruits);
+		apple.setCategory(fruits);
+		Collection<OrderDetails> orderDetails = ImmutableList.of(bananaOrderDetails, appleOrderDetails);
+
+		// Définition des associations commande <-> dépendances
+		OrderBuilder orderBuilder = order.toBuilder()
+				.details(orderDetails);
+
+		log.info(orderBuilder.toString());
+
+		return orderBuilder;
+	}
 }
