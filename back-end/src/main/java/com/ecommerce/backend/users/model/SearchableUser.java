@@ -11,17 +11,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Document(indexName = "user")
-@Getter @Setter
 @Builder
+@Getter @Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
+@Document(indexName = "user")
 public class SearchableUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private Long id;
 
 	private String username;
 

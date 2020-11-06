@@ -18,5 +18,4 @@ public final class Constants {
 	public final String CONTENT_TYPE = "Content-type";
 	public final Integer TO_MS = 1000;
 	public final String ENCODING_UTF8 = "UTF-8";
-
 }

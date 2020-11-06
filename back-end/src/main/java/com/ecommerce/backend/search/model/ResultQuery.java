@@ -5,9 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@ToString
 @Getter @Setter
 @NoArgsConstructor
-@ToString(of= {"timeTook", "numberOfResults", "elements"})
 public class ResultQuery {
 
     private Float timeTook;

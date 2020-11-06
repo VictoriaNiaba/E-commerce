@@ -21,21 +21,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString(of= {"id", "quantity"})
-@Entity
-@Table(name = "orders_details")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@Entity @Table(name = "orders_details")
 public class OrderDetails implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(length = 10)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@ToString.Include
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id")
@@ -45,6 +42,7 @@ public class OrderDetails implements Serializable {
 	@JoinColumn(name = "product_id")
 	private Product product;
 
+	@ToString.Include
 	@Column(length = 11, nullable = false)
 	private int quantity;
 }

@@ -1,41 +1,17 @@
 package com.ecommerce.backend.orders.services;
 
-import javax.annotation.PostConstruct;
+import org.mapstruct.InjectionStrategy;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-import org.apache.commons.lang3.NotImplementedException;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.ecommerce.backend.core.Mapper;
 import com.ecommerce.backend.orders.api.OrderDto;
 import com.ecommerce.backend.orders.model.Order;
-import com.ecommerce.backend.orders.model.SearchableOrder;
 
-@Service
-public class OrderMapper implements Mapper<Order, OrderDto, SearchableOrder> {
+@Mapper(componentModel = "spring", uses = {
+		OrderDetailsMapper.class }, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+public interface OrderMapper {
 
-	private @Autowired ModelMapper modelMapper;
+	@Mapping(source = "user.username", target = "username")
+	public OrderDto toDto(Order domain);
 
-	@PostConstruct
-	public void updateTypeMap() {
-		modelMapper.createTypeMap(Order.class, OrderDto.class)
-				.<String>addMapping(src -> src.getUser().getUsername(),
-						(dest, value) -> dest.setUsername(value));
-	}
-
-	@Override
-	public OrderDto toDto(Order domain) {
-		return modelMapper.map(domain, OrderDto.class);
-	}
-
-	@Override
-	public Order toDomain(OrderDto dto) {
-		throw new NotImplementedException("Not implemented yet.");
-	}
-
-	@Override
-	public SearchableOrder toSearch(Order domain) {
-		throw new NotImplementedException("Not implemented yet.");
-	}
 }

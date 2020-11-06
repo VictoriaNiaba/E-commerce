@@ -20,7 +20,7 @@ public class OrderDto implements Serializable {
 		example = "2",
 		required = true
 	)
-	private int id;
+	private Long id;
 	
 	@Schema(
 		description = "Unique identifier of the user who made the order.",

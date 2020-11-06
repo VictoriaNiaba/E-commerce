@@ -29,50 +29,54 @@ import lombok.ToString;
 
 /* TODO: spécifier les valeurs par défaut en s'inspirant de 
  * celles décrites dans les schémas de la BDD. */
-@Getter @Setter
 @Builder
-@ToString(of = { "id", "username", "email", "firstName", "lastName", "age", "role", "authType" })
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "users")
+@Getter @Setter
+@ToString(onlyExplicitlyIncluded = true)
+@NoArgsConstructor @AllArgsConstructor
+@Entity @Table(name = "users")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(length = 11)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@ToString.Include
+	private Long id;
 	
 	@UpdateTimestamp
 	@Column(nullable = true)
 	private Date modificationDate;
 
+	@ToString.Include
 	@Column(length = 255, nullable = false)
 	private String username;
 
 	@Column(length = 255, nullable = false)
 	private String password;
 
+	@ToString.Include
 	@Column(length = 255, nullable = false)
 	private String email;
 
+	@ToString.Include
 	@Column(length = 255, nullable = true, name = "fname")
 	private String firstName;
 
+	@ToString.Include
 	@Column(length = 255, nullable = true, name = "lname")
 	private String lastName;
 
+	@ToString.Include
 	@Column(length = 10, nullable = true)
 	private Integer age;
 
+	@ToString.Include
 	@Column(length = 10, nullable = true)
 	private Integer role;
 
 	@Column(nullable = true, name = "photo_url")
 	private String photoUrl;
 
+	@ToString.Include
 	@Enumerated(EnumType.STRING)
 	@Column(length = 255, nullable = false, name = "type")
 	private AuthenticationType authType;

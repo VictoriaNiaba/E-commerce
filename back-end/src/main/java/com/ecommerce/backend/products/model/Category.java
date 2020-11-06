@@ -20,22 +20,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString(of= {"id", "title"})
-@Entity
-@Table(name = "categories")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@Entity @Table(name = "categories")
 public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(length = 11)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@ToString.Include
+	private Long id;
 
+	@ToString.Include
 	@Column(length = 255, nullable = false)
 	private String title;
 

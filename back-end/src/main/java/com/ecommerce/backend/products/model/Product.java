@@ -19,22 +19,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter
 @Builder
-@ToString(of= {"id", "title", "price", "quantity"})
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "products")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@Entity @Table(name = "products")
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(length = 10)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
+	@ToString.Include
+	private Long id;
 
+	@ToString.Include
 	@Column(length = 255, nullable = false)
 	private String title;
 
@@ -50,9 +49,11 @@ public class Product implements Serializable {
 	@Column(length = 255, nullable = false, name = "short_desc")
 	private String shortDescription;
 
+	@ToString.Include
 	@Column(nullable = false)
 	private double price;
 
+	@ToString.Include
 	@Column(length = 10, nullable = false)
 	private int quantity;
 

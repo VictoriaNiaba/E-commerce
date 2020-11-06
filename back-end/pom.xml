@@ -21,6 +21,7 @@
 		<modelmapper.version>2.3.8</modelmapper.version>
 		<org.json.version>20200518</org.json.version>
 		<mapstruct.version>1.4.1.Final</mapstruct.version>
+		<guava.version>30.0-jre</guava.version>
 	</properties>
 
 	<dependencies>
@@ -94,18 +95,13 @@
 		</dependency>
 		<!-- END Lombok -->
 
-		<!-- BEGIN ModelMapper (Dto <-> Domain) -->
-		<dependency>
-			<groupId>org.modelmapper</groupId>
-			<artifactId>modelmapper</artifactId>
-			<version>${modelmapper.version}</version>
-		</dependency>
+		<!-- BEGIN Mapping dependencies (Dto <-> Domain <-> Search) -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
 		</dependency>
-		<!-- END ModelMapper (Dto <-> Domain) -->
+		<!-- END Mapping dependencies (Dto <-> Domain <-> Search) -->
 
 		<!-- BEGIN Apache Commons dependencies -->
 		<dependency>
@@ -113,6 +109,14 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<!-- END Apache Commons dependencies -->
+
+		<!-- BEGIN Google Guava dependencies -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		<!-- END Google Guava dependencies -->
 
 		<!-- BEGIN JSON dependencies -->
 		<dependency>
@@ -122,11 +126,23 @@
 		</dependency>
 		<!-- END JSON dependencies -->
 
+		<!-- BEGIN Test dependencies -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-java8</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- END Test dependencies -->
 
 	</dependencies>
 
@@ -141,7 +157,30 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<release>11</release>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+					<generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.0.1</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

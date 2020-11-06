@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,22 +23,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString(of= {"id", "user"})
-@Entity
-@Table(name = "orders")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@Entity @Table(name = "orders")
 public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(length = 10)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@ToString.Include
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
+	@ToString.Include
 	@JoinColumn(name = "user_id")
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private User user;
