@@ -18,7 +18,7 @@ public class UserMother {
 
 		String firstName = "Nicolas", lastName = "Desnoust";
 		Address address = AddressMother.anAddress();
-
+		
 		User user = User.builder()
 				.id(autoIncrementId++)
 				.firstName(firstName)

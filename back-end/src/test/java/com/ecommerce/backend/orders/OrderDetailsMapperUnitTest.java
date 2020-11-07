@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,7 +13,6 @@ import com.ecommerce.backend.orders.model.OrderDetails;
 import com.ecommerce.backend.orders.services.OrderDetailsMapper;
 import com.ecommerce.backend.orders.services.OrderDetailsMapperImpl;
 
-@ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = { OrderDetailsMapperImpl.class })
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class OrderDetailsMapperUnitTest {

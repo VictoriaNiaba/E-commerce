@@ -60,11 +60,5 @@ public class Product implements Serializable {
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cat_id")
 	private Category category;
-
-//	@OneToMany(cascade = {
-//			CascadeType.MERGE,
-//			CascadeType.PERSIST,
-//			CascadeType.REMOVE
-//	}, fetch = FetchType.LAZY, mappedBy = "product")
-//	private Collection<OrderDetails> orderDetails;
+	
 }

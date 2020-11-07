@@ -4,9 +4,6 @@ import java.util.Collection;
 
 import com.ecommerce.backend.orders.model.Order;
 import com.ecommerce.backend.orders.model.OrderDetails;
-import com.ecommerce.backend.products.CategoryMother;
-import com.ecommerce.backend.products.model.Category;
-import com.ecommerce.backend.products.model.Product;
 import com.ecommerce.backend.users.UserMother;
 import com.ecommerce.backend.users.model.User;
 import com.google.common.collect.ImmutableList;
@@ -40,28 +37,12 @@ public class OrderMother {
 		// Création de la commande
 		Order order = OrderMother.anEmptyOrder();
 
-		// Création et association des dépendances
-		OrderDetails bananaOrderDetails = OrderDetailsMother.createBananaOrderDetails()
-				.toBuilder()
-				.order(order)
-				.build();
-		OrderDetails appleOrderDetails = OrderDetailsMother.anAppleOrderDetails()
-				.toBuilder()
-				.order(order)
-				.build();
+		// Création de détails de commande
+		Collection<OrderDetails> orderDetails = OrderDetailsMother.aOrderDetailsCollection();
 
-		// Mise à jour des produits de la catégorie fruits pour garantir la cohésion des références
-		Product banana = bananaOrderDetails.getProduct(), apple = appleOrderDetails.getProduct();
-		Category fruits = CategoryMother.aFruitCategory();
-		fruits.setProducts(ImmutableList.of(banana, apple));
-		banana.setCategory(fruits);
-		apple.setCategory(fruits);
-
-		Collection<OrderDetails> orderDetails = ImmutableList.of(
-				bananaOrderDetails, appleOrderDetails);
-
-		// Définition des associations commande <-> dépendances
-		order.toBuilder().details(orderDetails).build();
+		// Association commande <-> détails de commande
+		orderDetails.forEach(orderDetail -> orderDetail.setOrder(order));
+		order.setDetails(orderDetails);
 
 		log.info(order.toString());
 
