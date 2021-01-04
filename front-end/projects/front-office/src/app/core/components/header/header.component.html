@@ -1,0 +1,16 @@
+<mat-toolbar class="header">
+  <ecom-branding></ecom-branding>
+
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="showActions">
+    <button mat-flat-button [routerLink]="['/login']" routerLinkActive="active">
+      <i-feather name="user" class="user-icon"></i-feather>
+      Mon compte
+    </button>
+    <button mat-flat-button [routerLink]="['/admin']" routerLinkActive="active">
+      <i-feather name="shopping-cart" class="shopping-cart-icon"></i-feather>
+      Mon panier
+    </button>
+  </ng-container>
+</mat-toolbar>

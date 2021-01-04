@@ -1,0 +1,63 @@
+:host {
+  width: 100%;
+}
+
+.login-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Playfair Display';
+  font-size: 25px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+.mat-divider {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-hint {
+  font-size: 14px;
+
+  a {
+    color: inherit;
+    border-bottom: 1px solid #adafb2;
+    cursor: pointer;
+    padding-bottom: 1px;
+
+    &:hover {
+      color: black;
+      border-color: black;
+    }
+  }
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-flat-button {
+  border-radius: 0;
+}
+
+.action-button {
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 500;
+  font-size: 12px;
+}

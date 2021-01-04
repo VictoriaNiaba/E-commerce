@@ -1,0 +1,11 @@
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+  border-radius: 0;
+}
+
+.mat-toolbar h1 {
+  font: 800 26px $title-font-family !important;
+  margin-left: 0.5rem;
+}

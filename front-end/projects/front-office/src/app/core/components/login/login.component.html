@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <form class="example-form" [formGroup]="loginForm">
+    <div class="row-fluid">
+      <!-- BEGIN E-mail field -->
+      <div class="col-12" style="padding-bottom: 0.5rem">
+        <mat-form-field class="example-full-width">
+          <mat-label>E-mail</mat-label>
+          <input formControlName="username" matInput required #usernameInput />
+          <button
+            mat-button
+            *ngIf="f.username.value"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="f.username.patchValue('')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="f.username.invalid">{{
+            usernameErrorMessage
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- END E-mail field -->
+
+      <!-- BEGIN Password field -->
+      <div class="col-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>Mot de passe</mat-label>
+          <input type="password" formControlName="password" matInput required />
+          <button
+            mat-button
+            *ngIf="f.password.value"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="f.password.patchValue('')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="f.password.invalid">{{
+            passwordErrorMessage
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- END Password field -->
+
+      <div class="col-12" style="margin-top: 0.5rem">
+        <mat-hint>
+          <a>Vous avez oublié votre mot de passe ?</a>
+        </mat-hint>
+      </div>
+
+      <div class="col-12" style="margin-top: 2rem">
+        <button
+          mat-flat-button
+          [disabled]="loginForm.invalid"
+          color="primary"
+          class="action-button"
+          (click)="login()"
+          style="width: 100%"
+        >
+          Se connecter
+        </button>
+      </div>
+
+      <div class="col-12">
+        <mat-divider></mat-divider>
+      </div>
+
+      <div class="col-12">
+        <mat-hint>
+          Vous n'avez pas de compte ?
+          <a (click)="registerRequested.emit()">Inscrivez-vous</a>
+        </mat-hint>
+      </div>
+    </div>
+  </form>
+</div>
