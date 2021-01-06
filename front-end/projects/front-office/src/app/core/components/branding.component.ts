@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
         text-decoration: inherit;
       }
       .branding-title {
-        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
       }
       .branding-dot {
         font-size: 35px;

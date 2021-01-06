@@ -1,23 +1,24 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ecom-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent {
   loginForm: FormGroup;
   @Output() registerRequested = new EventEmitter<void>();
-  @ViewChild('usernameInput') usernameInput: ElementRef | undefined;
-
-  ngAfterViewInit() {
-    this.usernameInput?.nativeElement.focus();
-  }
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }
@@ -31,12 +32,15 @@ export class LoginComponent implements AfterViewInit {
     alert('Pas encore implémenté !');
   }
 
-  get usernameErrorMessage() {
-    const username = this.f.username;
-    return username.hasError('required') ? 'Ce champ est requis' : '';
+  get emailErrorMessage() {
+    if (this.f.email.hasError('required')) {
+      return 'Ce champ est requis';
+    }
+    return this.f.email.hasError('email')
+      ? 'Entrez un email valide. Example : mon.email@gmail.com'
+      : '';
   }
   get passwordErrorMessage() {
-    const password = this.f.password;
-    return password.hasError('required') ? 'Ce champ est requis' : '';
+    return this.f.password.hasError('required') ? 'Ce champ est requis' : '';
   }
 }

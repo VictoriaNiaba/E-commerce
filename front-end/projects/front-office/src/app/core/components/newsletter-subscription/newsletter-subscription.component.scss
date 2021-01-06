@@ -1,0 +1,19 @@
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.newsletter-subscription-title {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.example-form {
+  width: 300px;
+
+  .mat-form-field {
+    width: 100%;
+  }
+}

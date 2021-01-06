@@ -1,6 +1,7 @@
-.header {
-  border-bottom: 1px solid #d8d8d8;
-  padding-right: 0;
+.footer {
+  border-top: 1px solid #d8d8d8;
+  // padding: 3.2rem 4.1rem 6.4rem;
+  font-size: 14px;
 
   ::ng-deep .shopping-cart-icon,
   ::ng-deep .user-icon {
@@ -11,10 +12,10 @@
     svg {
       stroke-width: 1.3px;
     }
+  }
 
-    &.mat-badge-medium .mat-badge-content {
-      line-height: 20px;
-    }
+  .mat-toolbar-row {
+    justify-content: center;
   }
 
   button {

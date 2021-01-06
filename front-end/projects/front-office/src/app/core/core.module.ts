@@ -11,6 +11,12 @@ import { BrandingComponent } from './components/branding.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginAndRegisterComponent } from './components/login-and-register.component';
+import { FooterComponent } from './components/footer/footer.component';
+import {A11yModule} from '@angular/cdk/a11y';
+import { NewsletterSubscriptionComponent } from './components/newsletter-subscription/newsletter-subscription.component';
+import { SocialNetworksComponent } from './components/social-networks.component';
+import { NavFooterComponent } from './components/nav-footer/nav-footer.component';
+import { NavLocaleComponent } from './components/nav-locale.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,11 @@ import { LoginAndRegisterComponent } from './components/login-and-register.compo
     HeaderComponent,
     RegisterComponent,
     LoginAndRegisterComponent,
+    FooterComponent,
+    NewsletterSubscriptionComponent,
+    SocialNetworksComponent,
+    NavFooterComponent,
+    NavLocaleComponent,
   ],
   imports: [
     SharedModule,
@@ -28,6 +39,7 @@ import { LoginAndRegisterComponent } from './components/login-and-register.compo
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
+    A11yModule
   ],
 })
 export class CoreModule {}

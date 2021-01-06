@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <p class="newsletter-subscription-title">
+    Recevez promotions exclusives, ventes privées et nouveautés
+  </p>
+
+  <form class="example-form" [formGroup]="newsletterSubscriptionForm">
+    <div class="row-fluid">
+      <!-- BEGIN E-mail field -->
+      <div class="col-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>Saisissez votre e-mail</mat-label>
+          <input formControlName="email" matInput required />
+          <button
+            mat-button
+            *ngIf="f.email.value"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="f.email.patchValue('')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="f.email.invalid">{{ emailErrorMessage }}</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- END E-mail field -->
+
+      <div class="col-12" style="margin-top: 0.5rem">
+        <button
+          mat-flat-button
+          color="primary"
+          class="ecom-action-button"
+          style="width: 100%"
+        >
+          M'inscrire
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

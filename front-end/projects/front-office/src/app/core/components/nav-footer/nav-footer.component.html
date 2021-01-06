@@ -1,0 +1,15 @@
+<ul class="nav-footer">
+  <li *ngFor="let navItem of navItems">
+    <ng-container *ngIf="navItem.external; else internalBlock">
+      <a class="link-without-underline" [href]="navItem.link">
+        {{ navItem.label }}
+      </a>
+    </ng-container>
+
+    <ng-template #internalBlock>
+      <a class="link-without-underline" [routerLink]="navItem.link">
+        {{ navItem.label }}
+      </a>
+    </ng-template>
+  </li>
+</ul>

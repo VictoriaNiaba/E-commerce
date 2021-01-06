@@ -3,21 +3,25 @@
     <div class="row-fluid">
       <!-- BEGIN E-mail field -->
       <div class="col-12" style="padding-bottom: 0.5rem">
-        <mat-form-field class="example-full-width">
+        <mat-form-field
+          class="example-full-width"
+          cdkTrapFocus
+          [cdkTrapFocusAutoCapture]="true"
+        >
           <mat-label>E-mail</mat-label>
-          <input formControlName="username" matInput required #usernameInput />
+          <input formControlName="email" matInput required cdkFocusInitial />
           <button
             mat-button
-            *ngIf="f.username.value"
+            *ngIf="f.email.value"
             matSuffix
             mat-icon-button
             aria-label="Clear"
-            (click)="f.username.patchValue('')"
+            (click)="f.email.patchValue('')"
           >
             <mat-icon>close</mat-icon>
           </button>
-          <mat-error *ngIf="f.username.invalid">{{
-            usernameErrorMessage
+          <mat-error *ngIf="f.email.invalid">{{
+            emailErrorMessage
           }}</mat-error>
         </mat-form-field>
       </div>
@@ -54,9 +58,8 @@
       <div class="col-12" style="margin-top: 2rem">
         <button
           mat-flat-button
-          [disabled]="loginForm.invalid"
           color="primary"
-          class="action-button"
+          class="ecom-action-button"
           (click)="login()"
           style="width: 100%"
         >

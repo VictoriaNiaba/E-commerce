@@ -13,12 +13,13 @@ import { Component } from '@angular/core';
       :host {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        min-height: 100vh;
       }
       main {
+        flex-grow: 1;
         display: flex;
         justify-content: center;
-        padding-top: 2.5rem;
+        padding-top: 2rem;
         height: 100%;
       }
     `,
