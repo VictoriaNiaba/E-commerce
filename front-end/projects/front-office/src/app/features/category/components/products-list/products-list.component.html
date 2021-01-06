@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products">
+    <ecom-product-card [product]="product"></ecom-product-card>
+  </div>
+
+  <div class="col-12 see-more-container">
+    <button
+      mat-flat-button
+      color="primary"
+      class="ecom-action-button see-more-button"
+    >
+      Voir plus d'articles
+    </button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+[class^='col-'] {
+  display: flex;
+  align-items: center;
+  padding-bottom: 30px;
+  justify-content: center;
+}
+
+.row {
+  width: 100%;
+  margin: 0;
+}
+
+.see-more-container {
+  display: flex;
+  justify-content: center;
+
+  .see-more-button {
+    // font-size: 12px;
+    // line-height: 32px;
+    // padding: 0 26px;
+    // margin: 2rem 0;
+  }
+}

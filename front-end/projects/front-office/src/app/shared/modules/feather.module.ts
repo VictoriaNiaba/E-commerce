@@ -3,13 +3,14 @@ import { FeatherModule as AngularFeatherModule } from 'angular-feather';
 
 /* --------------- Usage : <i-feather name="eye"></i-feather> --------------- */
 
-import { ShoppingCart, User, X } from 'angular-feather/icons';
+import { ShoppingCart, User, X, Plus } from 'angular-feather/icons';
 
 // Select some icons (use an object, not an array)
 const icons = {
   ShoppingCart,
   User,
-  X
+  X,
+  Plus
 };
 
 @NgModule({

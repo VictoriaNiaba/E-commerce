@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './containers/admin/admin.component';
+
+import { CategoryDetailPageComponent } from './containers/category-detail-page.component';
 
 const routes: Routes = [
-  { path: '', component: AdminComponent }
+  { path: ':id', component: CategoryDetailPageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminRoutingModule {}
+export class CategoryRoutingModule {}

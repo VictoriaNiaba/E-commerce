@@ -1,0 +1,31 @@
+<mat-card
+  *ngIf="product"
+  routerLink="/"
+  class="example-card mat-elevation-z0"
+  matRipple
+  [matRippleDisabled]="cardRippleDisabled"
+>
+  <img
+    mat-card-image
+    [src]="product.image"
+    alt="Photo of {{ product.title }}"
+  />
+  <mat-card-header>
+    <mat-card-title>{{ product.title }}</mat-card-title>
+    <mat-card-subtitle>A partir de 15.90€</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-actions>
+    <button
+      mat-flat-button
+      click-stop-propagation
+      color="primary"
+      (mousedown)="cardRippleDisabled = true"
+      (mouseup)="cardRippleDisabled = false"
+      class="ecom-action-button"
+      (click)="$event.stopPropagation()"
+    >
+      <i-feather name="plus"></i-feather>AJOUTER AU PANIER
+    </button>
+  </mat-card-actions>
+</mat-card>

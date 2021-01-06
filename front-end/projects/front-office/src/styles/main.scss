@@ -15,12 +15,69 @@ $title-font-family: 'Playfair Display';
 }
 body {
   font-family: $font-family;
+  height: 100vh;
+  margin: 0;
 }
-h1 {
+.mat-card-header .mat-card-title {
+  font-weight: bold;
+  font-size: 16px !important;
+}
+.mat-card-header .mat-card-subtitle {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $title-font-family;
+}
+h2 {
+  font-size: 1.5rem;
 }
 .spacer {
   flex: 1 0 auto;
+}
+.mat-button.ecom-action-button,
+.mat-flat-button.ecom-action-button {
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 500;
+  font-size: 12px;
+}
+.mat-hint {
+  font-size: 14px;
+
+  a {
+    border-color: #bdbdbd;
+  }
+}
+a {
+  color: inherit;
+  border-color: inherit;
+  cursor: pointer;
+  padding-bottom: 1px;
+  text-decoration: none;
+
+  &:not(.mat-icon-button) {
+    border-bottom: 1px solid;
+  }
+
+  &:hover {
+    color: black;
+    border-color: black;
+
+    &:not(.mat-icon-button) {
+      border-bottom: 1px solid;
+    }
+  }
+
+  &.link-without-underline:not(:hover) {
+    border-bottom: 0;
+  }
 }
 
 @mixin material-core($font-family) {
@@ -31,9 +88,25 @@ h1 {
 
 // Custom colors palettes
 $dark-primary: mat-palette($mat-gray, 900, 900, 900);
-$dark-accent: mat-palette($mat-gray, 900, 900, 900);
-$dark-warn: mat-palette($mat-red);
+$dark-accent: mat-palette($mat-pink, 700, 600, 800);
+$dark-warn: mat-palette($mat-pink, 700, 600, 800);
 
 // Custom dark theme
-$dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
-@include angular-material-theme($dark-theme);
+$light-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Custom Background palette
+$custom-light-theme-background: (
+  app-bar: white,
+);
+
+// Remplacement de la palette 'Background' par défaut
+$background: map-get($light-theme, background);
+$background: map_merge($background, $custom-light-theme-background);
+$light-theme: map_merge(
+  $light-theme,
+  (
+    background: $background,
+  )
+);
+
+@include angular-material-theme($light-theme);

@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './modules/material.module';
 import { FeatherModule } from './modules/feather.module';
 import { FontAwesomeModule } from './modules/fontawesome.module';
+import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
+
+const DIRECTIVES = [ClickStopPropagationDirective];
 
 const MODULES = [
   CommonModule,
@@ -19,8 +22,8 @@ const MODULES = [
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [...MODULES],
-  exports: [...MODULES],
+  declarations: [...DIRECTIVES],
+  imports: [...MODULES, ...DIRECTIVES],
+  exports: [...MODULES, ...DIRECTIVES],
 })
 export class SharedModule {}
