@@ -28,6 +28,11 @@ import { Component } from '@angular/core';
         top: 0;
         z-index: 1000;
       }
+      .example-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
       main {
         flex-grow: 1;
         display: flex;
@@ -35,6 +40,11 @@ import { Component } from '@angular/core';
       }
       .mat-drawer {
         width: 200px;
+      }
+      .mat-drawer-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
       }
       .mat-drawer-container {
         background-color: inherit;
