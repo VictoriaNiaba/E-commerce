@@ -17,6 +17,7 @@ import { NewsletterSubscriptionComponent } from './components/newsletter-subscri
 import { SocialNetworksComponent } from './components/social-networks.component';
 import { NavFooterComponent } from './components/nav-footer/nav-footer.component';
 import { NavLocaleComponent } from './components/nav-locale.component';
+import { NavListComponent } from './components/nav-list/nav-list.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NavLocaleComponent } from './components/nav-locale.component';
     SocialNetworksComponent,
     NavFooterComponent,
     NavLocaleComponent,
+    NavListComponent,
   ],
   imports: [
     SharedModule,

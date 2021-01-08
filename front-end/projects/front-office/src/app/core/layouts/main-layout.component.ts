@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
     <ecom-header [showActions]="true" class="header"></ecom-header>
 
     <mat-drawer-container class="example-container">
-      <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+      <mat-drawer mode="side" opened>
+        <nav><ecom-nav-list></ecom-nav-list></nav>
+      </mat-drawer>
       <mat-drawer-content>
         <main>
           <router-outlet></router-outlet>
