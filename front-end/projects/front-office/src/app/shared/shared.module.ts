@@ -7,8 +7,12 @@ import { MaterialModule } from './modules/material.module';
 import { FeatherModule } from './modules/feather.module';
 import { FontAwesomeModule } from './modules/fontawesome.module';
 import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
+import { ReassuranceComponent } from './components/reassurance/reassurance.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 const DIRECTIVES = [ClickStopPropagationDirective];
+
+const COMPONENTS = [ReassuranceComponent, CarouselComponent];
 
 const MODULES = [
   CommonModule,
@@ -22,8 +26,8 @@ const MODULES = [
 ];
 
 @NgModule({
-  declarations: [...DIRECTIVES],
+  declarations: [...DIRECTIVES, ...COMPONENTS],
   imports: [...MODULES],
-  exports: [...MODULES, ...DIRECTIVES],
+  exports: [...MODULES, ...DIRECTIVES, ...COMPONENTS],
 })
 export class SharedModule {}
