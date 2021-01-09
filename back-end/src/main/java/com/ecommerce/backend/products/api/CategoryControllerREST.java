@@ -32,7 +32,7 @@ public class CategoryControllerREST implements CategoryControllerSpecification {
 	@PageableAsQueryParam
 	public ResponseEntity<Page<CategoryDto>> findAllCategories(@Parameter(hidden = true) Pageable pageable) {
 		Page<CategoryDto> categoriesDto = categoryRepository.findAll(pageable)
-					.map(categoryMapper::toDto);
+				.map(categoryMapper::toDto);
 
 		return ResponseEntity.ok().body(categoriesDto);
 	}
