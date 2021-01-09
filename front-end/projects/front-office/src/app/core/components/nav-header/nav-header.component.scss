@@ -1,0 +1,28 @@
+nav {
+  font-size: 14px;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    padding-inline-start: 0;
+
+    li {
+      margin-right: 1rem;
+      float: left;
+      line-height: 20px;
+      // font-weight: bold;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        border-width: 1.4px;
+      }
+
+      a:not(:hover) {
+        border-color: transparent;
+      }
+    }
+  }
+}

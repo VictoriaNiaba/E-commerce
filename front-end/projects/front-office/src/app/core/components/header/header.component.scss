@@ -2,6 +2,10 @@
   border-bottom: 1px solid #d8d8d8;
   padding-right: 0;
 
+  .nav-header {
+    margin-left: 4rem;
+  }
+
   ::ng-deep .shopping-cart-icon,
   ::ng-deep .user-icon {
     margin-right: 0.5rem;

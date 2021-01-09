@@ -18,6 +18,7 @@ import { NavListComponent } from './components/nav-list.component';
 import { NewsletterSubscriptionComponent } from './components/newsletter-subscription/newsletter-subscription.component';
 import { SocialNetworksComponent } from './components/social-networks.component';
 import { AuthLayoutComponent } from './layouts/auth-layout.component';
+import { NavHeaderComponent } from './components/nav-header/nav-header.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout.component';
     NavFooterComponent,
     NavLocaleComponent,
     NavListComponent,
+    NavHeaderComponent,
   ],
   imports: [
     SharedModule,

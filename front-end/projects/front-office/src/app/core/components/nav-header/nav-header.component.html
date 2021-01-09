@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    <li *ngFor="let navListItem of navListItems">
+      <a [routerLink]="navListItem.link" class="link-without-underline">
+        {{ navListItem.label }}
+      </a>
+    </li>
+  </ul>
+</nav>

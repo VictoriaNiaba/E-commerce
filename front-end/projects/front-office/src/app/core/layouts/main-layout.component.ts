@@ -4,18 +4,10 @@ import { Component } from '@angular/core';
   selector: 'ecom-main-layout',
   template: `
     <ecom-header [showActions]="true" class="header"></ecom-header>
-
-    <mat-drawer-container class="example-container">
-      <mat-drawer mode="side" opened>
-        <nav><ecom-nav-list></ecom-nav-list></nav>
-      </mat-drawer>
-      <mat-drawer-content>
-        <main>
-          <router-outlet></router-outlet>
-        </main>
-        <ecom-footer></ecom-footer
-      ></mat-drawer-content>
-    </mat-drawer-container>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <ecom-footer></ecom-footer>
   `,
   styles: [
     `
