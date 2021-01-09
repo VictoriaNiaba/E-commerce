@@ -11,6 +11,7 @@ import { BrandingComponent } from './components/branding.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginAndRegisterComponent } from './components/login-and-register.component';
+import { Error404Component } from './components/error404/error404.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import { NewsletterSubscriptionComponent } from './components/newsletter-subscription/newsletter-subscription.component';
@@ -21,6 +22,7 @@ import { NavListComponent } from './components/nav-list/nav-list.component';
 
 @NgModule({
   declarations: [
+    Error404Component,
     MainLayoutComponent,
     AuthLayoutComponent,
     LoginComponent,
