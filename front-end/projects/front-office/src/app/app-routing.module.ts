@@ -1,22 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { Error404Component } from './core/components/error404/error404.component';
 import { LoginAndRegisterComponent } from './core/components/login-and-register.component';
 import { AuthLayoutComponent } from './core/layouts/auth-layout.component';
 import { MainLayoutComponent } from './core/layouts/main-layout.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginAndRegisterComponent,
-      },
-    ],
-  },
   {
     path: '',
     component: MainLayoutComponent,
@@ -35,7 +26,17 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'home' },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginAndRegisterComponent,
+      },
+      { path: '**', component: Error404Component },
+    ],
+  },
 ];
 
 @NgModule({
