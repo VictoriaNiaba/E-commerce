@@ -41,7 +41,7 @@ import { Component } from '@angular/core';
         height: 100%;
       }
       .mat-drawer {
-        width: 200px;
+        width: 180px;
       }
       .mat-drawer-content {
         flex-grow: 1;
