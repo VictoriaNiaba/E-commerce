@@ -22,15 +22,20 @@
             "main": "projects/front-office/src/main.ts",
             "polyfills": "projects/front-office/src/polyfills.ts",
             "tsConfig": "projects/front-office/tsconfig.app.json",
+            "allowedCommonJsDependencies": ["jquery"],
             "aot": true,
             "assets": [
               "projects/front-office/src/favicon.ico",
               "projects/front-office/src/assets"
             ],
             "styles": [
-              "projects/front-office/src/styles/main.scss"
+              "projects/front-office/src/styles/main.scss",
+              "./node_modules/slick-carousel/slick/slick.css",
+              "./node_modules/slick-carousel/slick/slick-theme.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/glider-js/glider.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,9 +97,13 @@
               "projects/front-office/src/assets"
             ],
             "styles": [
-              "projects/front-office/src/styles/main.scss"
+              "projects/front-office/src/styles/main.scss",
+              "./node_modules/slick-carousel/slick/slick.css",
+              "./node_modules/slick-carousel/slick/slick-theme.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/glider-js/glider.min.js"
+            ]
           }
         },
         "lint": {
@@ -105,9 +114,7 @@
               "projects/front-office/tsconfig.spec.json",
               "projects/front-office/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

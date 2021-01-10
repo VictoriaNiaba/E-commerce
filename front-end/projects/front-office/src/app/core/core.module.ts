@@ -12,12 +12,13 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { SharedModule } from '../shared/shared.module';
 import { Error404Component } from './components/error404/error404.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NavFooterComponent } from './components/nav-footer/nav-footer.component';
-import { NavLocaleComponent } from './components/nav-locale.component';
-import { NavListComponent } from './components/nav-list.component';
-import { NewsletterSubscriptionComponent } from './components/newsletter-subscription/newsletter-subscription.component';
-import { SocialNetworksComponent } from './components/social-networks.component';
+import { NavHeaderComponent } from './components/nav-header/nav-header.component';
 import { AuthLayoutComponent } from './layouts/auth-layout.component';
+import { SocialNetworksComponent } from './components/social-networks.component';
+import { NewsletterSubscriptionComponent } from './components/newsletter-subscription/newsletter-subscription.component';
+import { NavListComponent } from './components/nav-list.component';
+import { NavLocaleComponent } from './components/nav-locale.component';
+import { NavFooterComponent } from './components/nav-footer/nav-footer.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout.component';
     NavFooterComponent,
     NavLocaleComponent,
     NavListComponent,
+    NavHeaderComponent,
   ],
   imports: [
     SharedModule,

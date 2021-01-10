@@ -1,0 +1,136 @@
+.slick-slide {
+  justify-content: center;
+  display: flex;
+}
+
+::ng-deep .slick-dots li button:before {
+  font-size: 10px;
+}
+
+::ng-deep .slick-dots {
+  bottom: -1px;
+}
+
+::ng-deep .slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+
+.carousel-container {
+  position: relative;
+
+  .carousel-arrow {
+    background-color: #232323b4;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    z-index: 100;
+
+    ::ng-deep svg {
+      stroke-width: 1.3px;
+    }
+
+    &.carousel-prev {
+      left: 25px;
+
+      i-feather {
+        padding-right: 2px;
+      }
+    }
+    &.carousel-next {
+      right: 25px;
+
+      i-feather {
+        padding-left: 2px;
+      }
+    }
+  }
+
+  .carousel-content > div:not(:first-child) {
+    display: none !important;
+  }
+  .carousel-content > div:first-child {
+    padding: 0 20px !important;
+  }
+
+  .carousel-content div {
+    outline: none;
+    display: flex;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+
+    @media (min-width: 1201px) {
+      height: 360px;
+    }
+
+    @media (max-width: 1200px) {
+      &::before {
+        content: '';
+        display: block;
+        padding-top: 35%;
+      }
+    }
+
+    &:hover .overlay button {
+      color: white;
+      background-color: #232323;
+      font-weight: 500;
+    }
+
+    .carousel-action-button {
+      position: absolute;
+      z-index: 100;
+    }
+
+    img {
+      max-width: 1030px;
+      width: 100%;
+      height: inherit;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      right: 0;
+      margin-left: 50%;
+      transform: translate(-50%);
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      @media (max-width: 1200px) {
+        height: auto;
+      }
+    }
+
+    .overlay {
+      width: 100%;
+      height: inherit;
+      position: relative;
+      padding: 2rem 3rem;
+
+      &--top-left {
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      &--top-right {
+        justify-content: flex-end;
+        align-items: flex-start;
+      }
+      &--bottom-left {
+        justify-content: flex-start;
+        align-items: flex-end;
+      }
+      &--bottom-right {
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+
+      .button-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
