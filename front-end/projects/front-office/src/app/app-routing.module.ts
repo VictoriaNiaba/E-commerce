@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Error404Component } from './core/components/error404/error404.component';
-import { LoginAndRegisterComponent } from './core/components/login-and-register.component';
-import { AuthLayoutComponent } from './core/layouts/auth-layout.component';
-import { MainLayoutComponent } from './core/layouts/main-layout.component';
+import { SessionLayoutComponent } from './layouts/containers/session-layout.component';
+import { MainLayoutComponent } from './layouts/containers/main-layout.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -28,15 +26,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AuthLayoutComponent,
+    component: SessionLayoutComponent,
     children: [
       {
-        path: 'login',
-        component: LoginAndRegisterComponent,
+        path: 'sessions',
+        loadChildren: () =>
+          import('./sessions/sessions.module').then((m) => m.SessionsModule),
       },
-      { path: '**', component: Error404Component },
     ],
   },
+  { path: '**', redirectTo: 'sessions/404' },
 ];
 
 @NgModule({

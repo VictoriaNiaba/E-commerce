@@ -17,6 +17,10 @@ body {
   font-family: $font-family;
   height: 100vh;
   margin: 0;
+  letter-spacing: 0.04rem;
+}
+.mat-toolbar {
+  letter-spacing: 0.04rem !important;
 }
 .mat-card-header .mat-card-title {
   font-weight: bold;
@@ -31,6 +35,8 @@ h1 {
 }
 h2 {
   font-size: 1.5rem;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 .spacer {
   flex: 1 0 auto;

@@ -1,10 +1,10 @@
-<div class="carousel-container">
+<section class="carousel">
   <!-- BEGIN Carousel Previous arrow -->
   <button
     class="mat-elevation-z0 carousel-arrow carousel-prev"
     mat-mini-fab
     color="primary"
-    aria-label="Example icon button with a menu icon"
+    aria-label="Previous arrow"
   >
     <i-feather name="chevron-left"></i-feather>
   </button>
@@ -15,7 +15,7 @@
     class="mat-elevation-z0 carousel-arrow carousel-next"
     mat-mini-fab
     color="primary"
-    aria-label="Example icon button with a menu icon"
+    aria-label="Next arrow"
   >
     <i-feather name="chevron-right"></i-feather>
   </button>
@@ -24,6 +24,7 @@
   <!-- BEGIN Carousel Content -->
   <div class="carousel-content">
     <div
+      class="carousel-slide"
       *ngFor="let item of carouselItems"
       [ngStyle]="{
         'background-color': item.backgroundColor
@@ -34,7 +35,7 @@
     >
       <img width="1030" height="360" [src]="item.image" />
 
-      <div *ngIf="false" class="overlay overlay--top-left">
+      <div class="overlay overlay--bottom-left">
         <button
           class="mat-elevation-z0 ecom-action-button"
           mat-stroked-button
@@ -47,4 +48,4 @@
     </div>
   </div>
   <!-- END Carousel Content -->
-</div>
+</section>
