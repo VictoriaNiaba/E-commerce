@@ -4,8 +4,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
-import com.ecommerce.backend.products.model.Product;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -21,5 +19,7 @@ public interface ProductControllerSpecification {
 		description = "Allow pagination and sorting",
 		tags = { "products" }
 	)
-	public ResponseEntity<Page<Product>> findAllProducts(Pageable pageable);
+	public ResponseEntity<Page<ProductDto>> findAll(Pageable pageable);
+
+	public ResponseEntity<Iterable<ProductDto>> findAllById(Iterable<Long> ids);
 }
