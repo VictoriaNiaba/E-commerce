@@ -9,32 +9,11 @@ import { ProductService } from '../services/product.service';
 @Component({
   selector: 'ecom-category-detail-page',
   template: `
+    <mat-divider></mat-divider>
     <div>
-      <div
-        class="container-fluid"
-        style="width: 100%; margin-top: 1rem; padding: 0 2rem"
-      >
-        <mat-hint style="font-size: 11px; letter-spacing: 0.04rem;"
-          >Accueil - Livres</mat-hint
-        >
-        <h2
-          style="font-weight: 500; margin-top:0.5rem; text-transform: uppercase"
-        >
-          Livres
-        </h2>
-      </div>
-      <ecom-carousel></ecom-carousel>
-      <ecom-reassurance></ecom-reassurance>
-
-      <div
-        class="container-fluid"
-        style="width: 100%; padding: 2rem"
-      >
-        <h2
-          style="font-weight: 500; text-transform: uppercase; margin:0"
-        >
-          Les mieux notés
-        </h2>
+      <div class="container-fluid section-header">
+        <mat-hint class="breadcrumb">Accueil - Livres</mat-hint>
+        <h2 class="section-title">Livres</h2>
       </div>
       <ecom-products-list
         [products]="(products$ | async) || []"
@@ -45,6 +24,18 @@ import { ProductService } from '../services/product.service';
     `
       :host {
         width: 100%;
+      }
+      .breadcrumb {
+        font-size: 11px;
+        letter-spacing: 0.04rem;
+      }
+      .section-title {
+        margin-top: 0.5rem;
+      }
+      .section-header {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0 2rem;
       }
     `,
   ],
