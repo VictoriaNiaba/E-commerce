@@ -1,5 +1,8 @@
 import { Directive, HostListener } from '@angular/core';
 
+/**
+ * Permet de stopper la propagation d'un click.
+ */
 @Directive({
   selector: '[click-stop-propagation]',
 })
